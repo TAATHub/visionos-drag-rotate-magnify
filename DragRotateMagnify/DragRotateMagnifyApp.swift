@@ -10,12 +10,14 @@ struct DragRotateMagnifyApp: App {
             ContentView()
                 .environment(appModel)
         }
+        .windowResizability(.contentSize)
         
         WindowGroup(id: appModel.volumeWindowID) {
             VolumeView()
                 .environment(appModel)
-                .frame(width: 1500, height: 1500)
-                .frame(depth: 1500)
+                .frame(width: 1000, height: 1000)
+                .frame(depth: 1000)
+                .modelContainer(for: Craft.self)
         }
         .windowStyle(.volumetric)
         .windowResizability(.contentSize)

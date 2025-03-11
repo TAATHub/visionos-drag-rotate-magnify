@@ -17,18 +17,18 @@ def Xform "Root"
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        reorder nameChildren = ["MaplePlywood", "DefaultMaterial"]
+        reorder nameChildren = ["MaplePlywood", "Material"]
         rel material:binding = </Root/Cube/MaplePlywood> (
             bindMaterialAs = "weakerThanDescendants"
         )
         double size = 1
-        float3 xformOp:scale = (1, 0.05, 1)
-        float3 xformOp:translate = (0, -0.025, 0)
+        float3 xformOp:scale = (0.6, 0.030000001, 0.6)
+        float3 xformOp:translate = (0, -0.015, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def "MaplePlywood" (
             active = true
-            prepend references = @MaplePlywood.usdz@
+            references = @MaplePlywood.usdz@
         )
         {
         }
@@ -36,11 +36,11 @@ def Xform "Root"
 
     def "Toy_Drummer" (
         active = true
-        prepend references = @Drummer.usdz@
+        references = @Drummer.usdz@
     )
     {
         quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:scale = (0.6, 0.6, 0.6)
         float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
@@ -58,7 +58,7 @@ def Xform "Root"
 
             def RealityKitStruct "Shape"
             {
-                float3 extent = (0.09722796, 0.1361873, 0.08442151)
+                float3 extent = (0.09722796, 0.1361873, 0.097)
                 token shapeType = "Box"
 
                 def RealityKitStruct "pose"
@@ -69,47 +69,13 @@ def Xform "Root"
         }
     }
 
-    def "ToyCar" (
-        active = true
-        prepend references = @ToyCar.usdz@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0.3, 0, 0)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def RealityKitComponent "InputTarget"
-        {
-            uniform token info:id = "RealityKit.InputTarget"
-        }
-
-        def RealityKitComponent "Collider"
-        {
-            uint group = 1
-            uniform token info:id = "RealityKit.Collider"
-            uint mask = 4294967295
-            token type = "Default"
-
-            def RealityKitStruct "Shape"
-            {
-                float3 extent = (0.12440349, 0.116056755, 0.313117)
-                token shapeType = "Box"
-
-                def RealityKitStruct "pose"
-                {
-                    float3 position = (3.7252903e-9, 0.058028363, 0)
-                }
-            }
-        }
-    }
-
     def "ToyRocket" (
         active = true
-        prepend references = @ToyRocket.usdz@
+        references = @ToyRocket.usdz@
     )
     {
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-0.3, 2.9802322e-8, 0)
+        float3 xformOp:scale = (0.6, 0.6, 0.6)
+        float3 xformOp:translate = (-0.2, 2.9802322e-8, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -127,6 +93,40 @@ def Xform "Root"
                 def RealityKitStruct "pose"
                 {
                     float3 position = (-1.1175871e-8, 0.12399037, -3.7252903e-9)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+    }
+
+    def "ToyBiplane" (
+        active = true
+        references = @ToyBiplane.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.6, 0.6, 0.6)
+        float3 xformOp:translate = (0.2, -2.9802322e-8, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.25410354, 0.10948083, 0.254)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.0003277585, 0.054739587, -0.0010612011)
                 }
             }
         }
