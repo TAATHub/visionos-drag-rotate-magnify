@@ -12,18 +12,104 @@ def Xform "Root"
         bindMaterialAs = "weakerThanDescendants"
     )
 
-    def Sphere "Sphere" (
+    def Cube "Cube" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        rel material:binding = </Root/GridMaterial/GridMaterial> (
+        reorder nameChildren = ["MaplePlywood", "DefaultMaterial"]
+        rel material:binding = </Root/Cube/MaplePlywood> (
             bindMaterialAs = "weakerThanDescendants"
         )
-        double radius = 0.05
+        double size = 1
+        float3 xformOp:scale = (1, 0.05, 1)
+        float3 xformOp:translate = (0, -0.025, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "MaplePlywood" (
+            active = true
+            prepend references = @MaplePlywood.usdz@
+        )
+        {
+        }
+    }
+
+    def "Toy_Drummer" (
+        active = true
+        prepend references = @Drummer.usdz@
+    )
+    {
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 0, 0.0004)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.09722796, 0.1361873, 0.08442151)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.009319404, 0.06809365, 0)
+                }
+            }
+        }
+    }
+
+    def "ToyCar" (
+        active = true
+        prepend references = @ToyCar.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.3, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.12440349, 0.116056755, 0.313117)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (3.7252903e-9, 0.058028363, 0)
+                }
+            }
+        }
+    }
+
+    def "ToyRocket" (
+        active = true
+        prepend references = @ToyRocket.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.3, 2.9802322e-8, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -35,9 +121,13 @@ def Xform "Root"
 
             def RealityKitStruct "Shape"
             {
-                float3 extent = (0.2, 0.2, 0.2)
-                float radius = 0.05
-                token shapeType = "Sphere"
+                float3 extent = (0.14075813, 0.23484674, 0.14075813)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-1.1175871e-8, 0.12399037, -3.7252903e-9)
+                }
             }
         }
 
@@ -45,15 +135,6 @@ def Xform "Root"
         {
             uniform token info:id = "RealityKit.InputTarget"
         }
-    }
-
-    def "GridMaterial" (
-        active = true
-        prepend references = @Materials/GridMaterial.usda@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 

@@ -1,17 +1,12 @@
-//
-//  AppModel.swift
-//  DragRotateMagnify
-//
-//  Created by TAAT on 2025/03/10.
-//
-
 import SwiftUI
 
 /// Maintains app-wide state
 @MainActor
 @Observable
 class AppModel {
+    let volumeWindowID = "VolumeWindow"
     let immersiveSpaceID = "ImmersiveSpace"
+    
     enum ImmersiveSpaceState {
         case closed
         case inTransition

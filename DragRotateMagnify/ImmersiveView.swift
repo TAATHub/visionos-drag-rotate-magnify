@@ -1,10 +1,3 @@
-//
-//  ImmersiveView.swift
-//  DragRotateMagnify
-//
-//  Created by TAAT on 2025/03/10.
-//
-
 import SwiftUI
 import RealityKit
 import RealityKitContent

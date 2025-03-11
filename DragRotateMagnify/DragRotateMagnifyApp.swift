@@ -1,10 +1,3 @@
-//
-//  DragRotateMagnifyApp.swift
-//  DragRotateMagnify
-//
-//  Created by TAAT on 2025/03/10.
-//
-
 import SwiftUI
 
 @main
@@ -17,6 +10,16 @@ struct DragRotateMagnifyApp: App {
             ContentView()
                 .environment(appModel)
         }
+        
+        WindowGroup(id: appModel.volumeWindowID) {
+            VolumeView()
+                .environment(appModel)
+                .frame(width: 1500, height: 1500)
+                .frame(depth: 1500)
+        }
+        .windowStyle(.volumetric)
+        .windowResizability(.contentSize)
+        .volumeWorldAlignment(.gravityAligned)
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
             ImmersiveView()

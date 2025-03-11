@@ -1,24 +1,19 @@
-//
-//  ContentView.swift
-//  DragRotateMagnify
-//
-//  Created by TAAT on 2025/03/10.
-//
-
 import SwiftUI
 import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
+    @Environment(AppModel.self) var appModel
+    @Environment(\.openWindow) var openWindow
 
     var body: some View {
-        VStack {
-            Model3D(named: "Scene", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
+        VStack(spacing: 64) {
+            Text("Drag Rotate Magnify")
+                .font(.largeTitle)
 
-            Text("Hello, world!")
-
-            ToggleImmersiveSpaceButton()
+            Button("Show Volume") {
+                openWindow(id: appModel.volumeWindowID)
+            }
         }
         .padding()
     }

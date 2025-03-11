@@ -1,10 +1,3 @@
-//
-//  ToggleImmersiveSpaceButton.swift
-//  DragRotateMagnify
-//
-//  Created by TAAT on 2025/03/10.
-//
-
 import SwiftUI
 
 struct ToggleImmersiveSpaceButton: View {
