@@ -2,7 +2,6 @@ import SwiftUI
 
 @main
 struct DragRotateMagnifyApp: App {
-
     @State private var appModel = AppModel()
 
     var body: some Scene {
@@ -17,7 +16,6 @@ struct DragRotateMagnifyApp: App {
                 .environment(appModel)
                 .frame(width: 1000, height: 1000)
                 .frame(depth: 1000)
-                .modelContainer(for: Craft.self)
         }
         .windowStyle(.volumetric)
         .windowResizability(.contentSize)
