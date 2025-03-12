@@ -44,13 +44,3 @@ struct VolumeView: View {
         try? modelContext.save()
     }
 }
-
-import Observation
-
-@Observable
-@MainActor
-final class CraftModel {
-//    @Query private var crafts: [Craft] = []
-    
-    
-}
