@@ -41,6 +41,14 @@ struct VolumeView: View {
         } else {
             modelContext.insert(craft)
         }
-        try? modelContext.save()
+        
+        // If Craft has unique property, calling insert will be upsert (insert + update)
+//        modelContext.insert(craft)
+        
+        if modelContext.hasChanges {
+            try? modelContext.save()
+        } else {
+            print("modelContext has no changes")
+        }
     }
 }
