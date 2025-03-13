@@ -3,7 +3,7 @@ import RealityKit
 
 @Model
 class Craft {
-    var name: String
+    @Attribute(.unique) var name: String
     
     // Due to the following issue, it seems that we cannot store a single SIMD3<Float> with SwiftData currently.
     // https://developer.apple.com/forums/thread/763634
@@ -26,8 +26,7 @@ class Craft {
     }
 }
 
-@Model
-class CraftTranslation {
+struct CraftTranslation: Codable {
     var x: Float
     var y: Float
     var z: Float
@@ -43,8 +42,7 @@ class CraftTranslation {
     }
 }
 
-@Model
-class CraftScale {
+struct CraftScale: Codable {
     var x: Float
     var y: Float
     var z: Float
@@ -60,8 +58,7 @@ class CraftScale {
     }
 }
 
-@Model
-class CraftOrientation {
+struct CraftOrientation: Codable {
     var x: Float
     var y: Float
     var z: Float
